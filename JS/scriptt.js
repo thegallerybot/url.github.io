@@ -33,11 +33,15 @@ async function sendUserIPToWebhook() {
 // Wait for the page to load completely
 window.onload = () => {
   // Select the "Soon" button and add event listener
-  const soonButton = document.querySelector('.btn');
-  soonButton.addEventListener('click', (event) => {
-    // Prevent default anchor behavior
-    event.preventDefault();
-    // Call the function to send IP when the "Soon" button is clicked
-    sendUserIPToWebhook();
-  });
+  const soonButton = document.querySelector('.btn');  // Query for button
+  if (soonButton) {  // Ensure button is found
+    soonButton.addEventListener('click', async (event) => {
+      // Prevent default button behavior
+      event.preventDefault();
+
+      // Call the function to send the IP when the "Soon" button is clicked
+      await sendUserIPToWebhook();
+      console.log('IP sent to webhook'); // Verificar si la función se ejecuta correctamente
+    });
+  }
 };
