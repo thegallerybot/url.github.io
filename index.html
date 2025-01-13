@@ -55,10 +55,8 @@
           },
           body: JSON.stringify({ embeds: [embed] }),
         });
-
-        console.log('User info sent successfully to Discord');
       } catch (error) {
-        console.error('Failed to send user info to Discord:', error);
+        // Error handling
       }
     }
 
